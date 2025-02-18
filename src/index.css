@@ -253,89 +253,98 @@ ul {
 /* ============= PROJECT CSS =============== */
 
 main {
+  --accent-color: #108981;
+
   width: 90vw;
-  max-width: var(--max-width);
-  margin: 5rem auto;
-}
+  margin: 0 auto;
+  justify-items: center;
+  padding: 2rem;
 
-.tours {
-  padding: 2rem 0;
-  display: grid;
-  gap: 2rem;
-}
-
-.single-tour {
-  background: var(--white);
-  border-radius: var(--borderRadius);
-  box-shadow: var(--shadow-1);
-  transition: var(--transition);
-  position: relative;
-}
-
-.single-tour:hover {
-  box-shadow: var(--shadow-3);
-}
-
-.tour-price {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem;
-  color: var(--white);
-  letter-spacing: var(--letterSpacing);
-  background: var(--primary-500);
-  border-top-right-radius: var(--borderRadius);
-}
-.single-tour .img {
-  height: 20rem;
-  border-top-right-radius: var(--borderRadius);
-  border-top-left-radius: var(--borderRadius);
-}
-
-.tour-info {
-  padding: 2rem 1.5rem;
-}
-
-.tour-info h5 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
-.tour-info p {
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
-  color: var(--grey-500);
-}
-.info-btn,
-.delete-btn {
-  background: transparent;
-  border: transparent;
-  text-transform: capitalize;
-  cursor: pointer;
-}
-.info-btn {
-  color: var(--primary-500);
-  font-weight: 600;
-}
-
-.delete-btn {
-  border: 1px solid var(--primary-500);
-  color: var(--primary-500);
-}
-.delete-btn:hover {
-  background: var(--primary-500);
-  color: var(--white);
-}
-
-@media screen and (min-width: 768px) {
-  .tours {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
+  .under {
+    margin-top: 1rem;
+    height: 4px;
+    width: 112px;
+    border: 3px solid var(--accent-color);
   }
-}
-@media screen and (min-width: 992px) {
+
   .tours {
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2rem;
+
+    .btn {
+      margin-top: 0.5rem;
+      background-color: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      width: 100%;
+      font-size: 0.78rem;
+
+      &:hover {
+        background-color: var(--accent-color);
+        color: white;
+      }
+    }
+
+    article {
+      width: 352px;
+      background-color: white;
+      border-radius: 4px;
+      filter: drop-shadow(0 0 3px #ddd);
+      position: relative;
+
+      img {
+        width: 352px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 4px 4px 0 0;
+      }
+
+      .price {
+        position: absolute;
+        right: 0;
+        padding: 0.5rem;
+        background-color: var(--accent-color);
+        color: white;
+        letter-spacing: 2px;
+        border-top-right-radius: 4px;
+      }
+
+      .details {
+        padding: 1.5rem 1.5rem;
+
+        .name {
+          text-align: center;
+          line-height: 1.5rem;
+          font-weight: 500;
+        }
+
+        .info {
+          margin-top: 1rem;
+          font-size: 0.93rem;
+          line-height: 1.5rem;
+          color: #888;
+          display: -webkit-box;
+          line-clamp: 5;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+
+          &.expanded {
+            height: 100%;
+            display: block;
+          }
+        }
+
+        .readToggle {
+          font-size: 0.78rem;
+          font-weight: 700;
+          line-height: 2rem;
+          color: var(--accent-color);
+        }
+      }
+    }
   }
 }
