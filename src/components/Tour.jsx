@@ -29,7 +29,7 @@ const Tour = ({ tour, removeTour }) => {
   };
 
   return (
-    <article>
+    <article className='singleTour'>
       <img src={image} alt={name} />
       <span className='price'>${price}</span>
       <div className='details'>

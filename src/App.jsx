@@ -13,6 +13,8 @@ const App = () => {
   }, []);
 
   const fetchTours = async () => {
+    setIsLoading(true);
+
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -28,22 +30,35 @@ const App = () => {
     }
   };
 
-  const handleGetTours = () => {
-    setIsLoading(true);
-    fetchTours();
+  const removeTour = (tourId) => {
+    const updatedTours = tours.filter((tour) => tour.id !== tourId);
+    setTours(updatedTours);
   };
+
+  if (isLoading) {
+    return (
+      <main>
+        <Loading />
+      </main>
+    );
+  }
+
+  if (!tours.length) {
+    return (
+      <main>
+        <h2 className='title'>No Tours Left</h2>
+        <button type='button' className='btn' onClick={fetchTours}>
+          Get More Tours
+        </button>
+      </main>
+    );
+  }
 
   return (
     <main>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <h2>Our Tours</h2>
-          <div className='under'></div>
-          <Tours tours={tours} getTours={handleGetTours} />
-        </>
-      )}
+      <h2 className='title'>Our Tours</h2>
+      <div className='under'></div>
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 };
